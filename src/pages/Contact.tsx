@@ -104,9 +104,7 @@ export default function Contact() {
             <a href={owner.linkedin} target="_blank" rel="noreferrer" className="text-text-muted hover:text-signal text-sm">
               LinkedIn profile
             </a>
-            <a href={owner.github} target="_blank" rel="noreferrer" className="text-text-muted hover:text-signal text-sm">
-              GitHub profile
-            </a>
+             
           </div>
         </div>
 
