@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/* ---------- Design tokens ---------- */
+:root {
+  color-scheme: dark;
+
+  /* Base surfaces — deep navy, not flat black */
+  --bg: #070b12;
+  --surface: #0d1520;
+  --surface-2: #131d2b;
+  --border: #202c3d;
+  --border-strong: #2c3b50;
+
+  /* Text */
+  --text: #e8edf3;
+  --text-muted: #93a2b6;
+  --text-faint: #5c6b80;
+
+  /* Signal accent — oscilloscope green, not the default acid-green/cyan */
+  --signal: #3ddc97;
+  --signal-strong: #63f0b0;
+  --signal-dim: rgba(61, 220, 151, 0.14);
+
+  /* Warm secondary — RF power-indicator amber, used sparingly */
+  --warn: #ff8a3d;
+  --warn-dim: rgba(255, 138, 61, 0.14);
+
+  --focus-ring: #63f0b0;
+
+  --font-display: "Space Grotesk", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f4f7f6;
+  --surface: #ffffff;
+  --surface-2: #eaf0ee;
+  --border: #d6dedb;
+  --border-strong: #b9c5c1;
+
+  --text: #0b1622;
+  --text-muted: #445264;
+  --text-faint: #6f7d8d;
+
+  --signal: #0e9a6c;
+  --signal-strong: #0b7d57;
+  --signal-dim: rgba(14, 154, 108, 0.1);
+
+  --warn: #c85a1d;
+  --warn-dim: rgba(200, 90, 29, 0.12);
+
+  --focus-ring: #0e9a6c;
+}
+
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-signal: var(--signal);
+  --color-signal-strong: var(--signal-strong);
+  --color-warn: var(--warn);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: var(--signal-dim);
+  color: var(--text);
+}
+
+/* Visible, deliberate focus state — not the browser default, not invisible */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--signal);
+  color: #04150e;
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  border-radius: 0 0 6px 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Spectrum-analyzer style divider: an irregular waveform, not a plain <hr> */
+.spectrum-rule {
+  display: block;
+  width: 100%;
+  height: 28px;
+  color: var(--border-strong);
+}
+
+/* Scrollbar restraint on dark surfaces */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 6px;
+}
