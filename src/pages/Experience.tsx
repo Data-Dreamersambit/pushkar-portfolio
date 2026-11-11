@@ -26,12 +26,12 @@ export default function Experience() {
       </div>
 
       <section className="max-w-4xl mx-auto px-5 sm:px-8 py-14">
-        <SectionHeader title="Education & certifications" />
+        <SectionHeader title="Education" />
         <ul className="space-y-3">
           {education.map((e, i) => (
             <li key={i} className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-border pb-3">
               <span className="text-text font-medium text-sm">{e.label}</span>
-              <span className="text-text-faint text-xs font-mono">{e.detail}</span>
+              {e.detail ? <span className="text-text-faint text-xs font-mono">{e.detail}</span> : null}
             </li>
           ))}
         </ul>
