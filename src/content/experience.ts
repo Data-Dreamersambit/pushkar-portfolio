@@ -50,5 +50,6 @@ export type EducationItem = {
 
 export const education: EducationItem[] = [
   { label: "MBA in Finance" },
+  { label: "BA in Economics" },
   { label: "Diploma in Civil Engineering" },
 ];
